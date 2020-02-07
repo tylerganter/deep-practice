@@ -19,18 +19,22 @@ train_data /= std
 
 - `relu` > `tanh` activation
 - bigger network is not necessarily better
+- small training set -> more overfitting (mitigate with smaller network)
 
 ## Optimization
 
 - larger batch size is generally always better
+- with very small datasets, use K-fold validation (typically K = 4 or 5)
+- with small datasets, once the optimal architecture / hyperparameters have been found, train final model on combined train + val dataset
 
 ### Classification
 
 - Use crossentropy loss for probabilities
+- metrics: `accuracy`
 
 #### Binary Classification
 - Use a `sigmoid` activation on the last layer
-- Use `binary_crossentropy` loss...or `mse`?
+- Use `binary_crossentropy` loss
 
 #### Multiclass Classification
 - Use a `softmax` activation on the last layer
@@ -38,3 +42,6 @@ train_data /= std
 - Use `sparse_categorical_crossentropy` loss with integer encoding labels
 
 ### Regression
+- Use NO activation on the last layer
+- Use `mse` loss
+- metrics: `mae` (mean absolute error)
